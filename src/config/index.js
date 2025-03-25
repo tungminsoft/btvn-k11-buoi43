@@ -5,6 +5,7 @@ const config = {
     productDetail: "/products/:id",
     register: "/register",
     login: "/login",
+    users: "/users",
     notFound: "*",
   },
 };

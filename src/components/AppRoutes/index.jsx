@@ -4,6 +4,8 @@ import Home from "../../pages/Home";
 import routes from "../../routers";
 import NoLayout from "../../layout/NoLayout";
 import NotFound from "../../pages/NotFound";
+import { Fragment } from "react";
+import ProtectedRoute from "../ProtectedRoute";
 
 const AppRoutes = () => {
   return (
@@ -12,10 +14,18 @@ const AppRoutes = () => {
         const Component = route.component;
         const Layout =
           route.layout === undefined ? DefaultLayout : route.layout || NoLayout;
+        const RouteWrapper = route.protected ? ProtectedRoute : Fragment;
 
         return (
           <Route key={route.path} element={<Layout />}>
-            <Route path={route.path} element={<Component />} />
+            <Route
+              path={route.path}
+              element={
+                <RouteWrapper>
+                  <Component />
+                </RouteWrapper>
+              }
+            />
           </Route>
         );
       })}

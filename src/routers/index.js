@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 import ProductDetail from "../pages/ProductDetail";
 import Products from "../pages/Products";
 import Register from "../pages/Register";
+import Users from "../pages/Users";
 
 const routes = [
   {
@@ -18,6 +19,7 @@ const routes = [
     path: config.routes.products,
     component: Products,
     layout: AdminLayout,
+    protected: true,
   },
   {
     path: config.routes.productDetail,
@@ -37,6 +39,13 @@ const routes = [
     path: config.routes.login,
     component: Login,
     layout: null,
+  },
+
+  {
+    path: config.routes.users,
+    component: Users,
+    layout: AdminLayout,
+    protected: true,
   },
 
   // Not NotFound
